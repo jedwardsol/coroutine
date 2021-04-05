@@ -37,10 +37,23 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "callstackTest", "callstackT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A768113F-4258-49D5-BB47-28B05A60B23A}"
 	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6_co_await", "6_co_await\6_co_await.vcxproj", "{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 results", "4 results", "{F7EF87DE-1289-4DDD-824A-782373C6545F}"
+	ProjectSection(SolutionItems) = preProject
 		generator.diagram.txt = generator.diagram.txt
 		generator.output.txt = generator.output.txt
 		generator.uml.txt = generator.uml.txt
-		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 results", "6 results", "{B987D1F0-D2EF-4107-80C0-F49C00937431}"
+	ProjectSection(SolutionItems) = preProject
+		co_await.diagram.txt = co_await.diagram.txt
+		co_await.output.txt = co_await.output.txt
+		co_await.uml.txt = co_await.uml.txt
 	EndProjectSection
 EndProject
 Global
@@ -107,9 +120,21 @@ Global
 		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Release|x64.Build.0 = Release|x64
 		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Release|x86.ActiveCfg = Release|Win32
 		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Release|x86.Build.0 = Release|Win32
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Debug|x64.ActiveCfg = Debug|x64
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Debug|x64.Build.0 = Debug|x64
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Debug|x86.ActiveCfg = Debug|Win32
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Debug|x86.Build.0 = Debug|Win32
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Release|x64.ActiveCfg = Release|x64
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Release|x64.Build.0 = Release|x64
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Release|x86.ActiveCfg = Release|Win32
+		{8B8C5616-5445-4F3D-8383-3FC35AAA46E4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7EF87DE-1289-4DDD-824A-782373C6545F} = {A768113F-4258-49D5-BB47-28B05A60B23A}
+		{B987D1F0-D2EF-4107-80C0-F49C00937431} = {A768113F-4258-49D5-BB47-28B05A60B23A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D2F5206-DAB2-420B-A5BE-2C26EF655096}

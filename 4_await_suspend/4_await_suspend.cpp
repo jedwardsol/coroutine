@@ -6,48 +6,10 @@
 #include "callstack/callstack.h"
 
 
-#include <coroutine>
-#include "coroutine.h"
+#include <coroutine>        // std
+#include "coroutine.h"      // jle versions of std types for instrumentation
 
 
-
-
-namespace jle
-{
-
-
-// this is a copy of std::suspend_always   (with `constexpr` removed)
-
-struct suspend_always 
-{
-    suspend_always()
-    {
-//      printStack();
-    }
-
-    _NODISCARD  bool await_ready() const noexcept 
-    {
-        callstack::printStack();
-        return false;
-    }
-
-    void await_suspend(std::coroutine_handle<>) const noexcept 
-    {
-        callstack::printStack();
-    }
-    
-    void await_resume() const noexcept 
-    {
-        callstack::printStack();
-    }
-};
-
-
-
-
-
-
-}
 
 struct resumable
 {

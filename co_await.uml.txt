@@ -1,0 +1,75 @@
+@startuml
+
+title "co_await  style Coroutine using the same generator (6_co_await)"
+
+
+participant consumer    
+participant awaiter
+participant resumable  
+participant promise
+participant coro_handle
+participant coroutine   as coro
+
+
+group Invoke
+consumer    ->  coro        : invoke
+
+coro        ->  promise     : create
+coro        ->  promise     : get_return_object
+promise     ->  coro_handle : from_promise
+coro        ->  promise     : initial_suspend
+coro        ->  awaiter     : await_ready
+awaiter     --> coro        : false
+coro        ->  awaiter     : await_suspend
+coro        ->  resumable   : create
+coro        ->  consumer        : return
+
+end
+
+group co_await & co_yield
+
+consumer    ->  resumable   : await_ready
+resumable   ->  coro_handle : done
+coro_handle --> resumable   : false
+
+consumer    ->  resumable   : await_suspend
+resumable   ->  coro_handle : resume
+coro_handle ->  coro        : invoke
+coro        ->  awaiter     : await_resume
+coro        ->  coro        : work
+coro        ->  coro        : co_yield
+coro        -> resumable    : yield_value    
+coro        -> awaiter      : await_ready
+awaiter     --> coro        : false
+coro        -> awaiter      : await_suspend    
+consumer    -> resumable    : await_resume
+resumable   -> coro_handle  : promise
+
+end
+
+
+
+group co_await & co_return
+
+consumer    ->  resumable   : await_ready
+resumable   ->  coro_handle : done
+coro_handle --> resumable   : false
+
+consumer    ->  resumable   : await_suspend
+resumable   ->  coro_handle : resume
+coro_handle ->  coro        : invoke
+coro        ->  awaiter     : await_resume
+coro        ->  coro        : work
+coro        ->  coro        : co_return
+coro        -> resumable    : return_value    
+coro        -> resumable    : final_suspend
+coro        -> awaiter      : await_ready
+awaiter     --> coro        : true
+coro        -> awaiter      : await_suspend    
+consumer    -> resumable    : await_resume
+resumable   -> coro_handle  : promise
+
+end
+
+
+@enduml

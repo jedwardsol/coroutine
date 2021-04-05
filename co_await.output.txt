@@ -1,0 +1,55 @@
+consume
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 produce produce$_InitCoro$2 resumable::promise_type::promise_type
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 produce produce$_InitCoro$2 resumable::promise_type::get_return_object
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 produce produce$_InitCoro$2 resumable::promise_type::get_return_object jle::coroutine_handle<resumable::promise_type>::from_promise
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 produce produce$_InitCoro$2 resumable::promise_type::initial_suspend
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 produce produce$_InitCoro$2 jle::suspend_always::await_ready
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 produce produce$_InitCoro$2 jle::suspend_always::await_suspend
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 produce resumable::resumable
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::operator bool jle::coroutine_handle<resumable::promise_type>::done
+done says false
+
+
+
+consumer co_awaiting
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_ready
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_ready jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 jle::suspend_always::await_resume
+produce starting
+produce yielding 3
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 resumable::promise_type::yield_value
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 jle::suspend_always::await_ready
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_resume
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_resume jle::coroutine_handle<resumable::promise_type>::promise
+consumed 3
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::operator bool jle::coroutine_handle<resumable::promise_type>::done
+done says false
+
+
+
+
+
+consumer co_awaiting
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_ready
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_ready jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 jle::suspend_always::await_resume
+produce yielding 9
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 resumable::promise_type::return_value
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 resumable::promise_type::final_suspend
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 jle::suspend_always::await_ready
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_suspend jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume produce$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_resume
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::await_resume jle::coroutine_handle<resumable::promise_type>::promise
+consumed 9
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::operator bool jle::coroutine_handle<resumable::promise_type>::done
+done says true
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::~resumable
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::~resumable jle::coroutine_handle<resumable::promise_type>::destroy
+ main consume consume$_InitCoro$2 consume$_ResumeCoro$1 resumable::~resumable jle::coroutine_handle<resumable::promise_type>::destroy std::coroutine_handle<resumable::promise_type>::destroy produce$_DestroyCoro$3 produce$_ResumeCoro$1 resumable::promise_type::~promise_type
