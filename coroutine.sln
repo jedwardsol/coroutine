@@ -35,6 +35,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "callstackTest", "callstackT
 		{0CF17EC0-38DE-4961-8852-29A92D176F52} = {0CF17EC0-38DE-4961-8852-29A92D176F52}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A768113F-4258-49D5-BB47-28B05A60B23A}"
+	ProjectSection(SolutionItems) = preProject
+		generator.diagram.txt = generator.diagram.txt
+		generator.output.txt = generator.output.txt
+		generator.uml.txt = generator.uml.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

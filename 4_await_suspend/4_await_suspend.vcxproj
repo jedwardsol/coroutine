@@ -157,6 +157,9 @@
   <ItemGroup>
     <ClCompile Include="4_await_suspend.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="coroutine.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

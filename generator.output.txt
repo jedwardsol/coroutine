@@ -1,0 +1,104 @@
+calling go for 1st time
+ main go go$_InitCoro$2 resumable::promise_type::promise_type
+ main go go$_InitCoro$2 resumable::promise_type::get_return_object
+ main go go$_InitCoro$2 resumable::promise_type::get_return_object jle::coroutine_handle<resumable::promise_type>::from_promise
+ main go go$_InitCoro$2 resumable::promise_type::initial_suspend
+ main go go$_InitCoro$2 jle::suspend_always::await_ready
+ main go go$_InitCoro$2 jle::suspend_always::await_suspend
+ main go resumable::resumable
+called go for 1st time
+main resuming
+ main resumable::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_resume
+coroutine starting
+coroutine yielding
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 resumable::promise_type::yield_value
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_ready
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::value
+ main resumable::value jle::coroutine_handle<resumable::promise_type>::promise
+main got 3
+main resuming
+ main resumable::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_resume
+coroutine yielding
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 resumable::promise_type::yield_value
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_ready
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::value
+ main resumable::value jle::coroutine_handle<resumable::promise_type>::promise
+main got 1
+main resuming
+ main resumable::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_resume
+coroutine yielding
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 resumable::promise_type::yield_value
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_ready
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::value
+ main resumable::value jle::coroutine_handle<resumable::promise_type>::promise
+main got 4
+main resuming
+ main resumable::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_resume
+coroutine yielding
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 resumable::promise_type::yield_value
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_ready
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::value
+ main resumable::value jle::coroutine_handle<resumable::promise_type>::promise
+main got 1
+main resuming
+ main resumable::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_resume
+coroutine yielding
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 resumable::promise_type::yield_value
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_ready
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::value
+ main resumable::value jle::coroutine_handle<resumable::promise_type>::promise
+main got 5
+main resuming
+ main resumable::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says false
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_resume
+coroutine returning
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 resumable::promise_type::return_value
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 resumable::promise_type::final_suspend
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_ready
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::resume std::coroutine_handle<resumable::promise_type>::resume go$_ResumeCoro$1 jle::suspend_always::await_suspend
+ main resumable::resume jle::coroutine_handle<resumable::promise_type>::done
+done says true
+ main resumable::value
+ main resumable::value jle::coroutine_handle<resumable::promise_type>::promise
+main got 9
+ main resumable::~resumable
+ main resumable::~resumable jle::coroutine_handle<resumable::promise_type>::destroy
+ main resumable::~resumable jle::coroutine_handle<resumable::promise_type>::destroy std::coroutine_handle<resumable::promise_type>::destroy go$_DestroyCoro$3 go$_ResumeCoro$1 resumable::promise_type::~promise_type

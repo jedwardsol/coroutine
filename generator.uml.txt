@@ -1,0 +1,76 @@
+@startuml
+
+title "Generator Style Coroutine (4_await_suspend)"
+
+
+participant consumer    as main
+participant awaiter
+participant resumable  
+participant promise
+participant coro_handle
+participant coroutine   as coro
+
+
+group Invoke
+main        ->  coro        : invoke
+
+coro        ->  promise     : create
+coro        ->  promise     : get_return_object
+promise     ->  coro_handle : from_promise
+coro        ->  promise     : initial_suspend
+coro        ->  awaiter     : await_ready
+awaiter     --> coro        : false
+coro        ->  awaiter     : await_suspend
+coro        ->  resumable   : create
+
+coro        ->  main        : return
+
+end
+
+group Resume & yield
+
+main        ->  resumable   : resume
+resumable   ->  coro_handle : done
+coro_handle --> resumable   : false
+resumable   ->  coro_handle : resume
+coro_handle ->  coro        : invoke
+coro        ->  awaiter     : await_resume
+coro        ->  coro        : work
+coro        ->  coro        : co_yield
+coro        -> resumable    : yield_value    
+coro        -> awaiter      : await_ready
+awaiter     --> coro        : false
+coro        -> awaiter      : await_suspend    
+resumable   ->  coro_handle : done
+coro_handle --> resumable   : false
+coro        -> main         : return
+main        -> resumable    : value
+resumable   -> coro_handle  : promise
+end
+
+
+
+group Resume & return
+
+main        ->  resumable   : resume
+resumable   ->  coro_handle : done
+coro_handle --> resumable   : false
+resumable   ->  coro_handle : resume
+coro_handle ->  coro        : invoke
+coro        ->  awaiter     : await_resume
+coro        ->  coro        : work
+coro        ->  coro        : co_return
+coro        -> resumable    : return_value    
+coro        -> resumable    : final_suspend    
+coro        -> awaiter      : await_ready
+awaiter     --> coro        : false
+coro        -> awaiter      : await_suspend    
+resumable   ->  coro_handle : done
+coro_handle --> resumable   : true
+coro        -> main         : return
+main        -> resumable    : value
+resumable   -> coro_handle  : promise
+end
+
+
+@enduml
