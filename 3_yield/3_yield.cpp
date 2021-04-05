@@ -3,7 +3,7 @@
 #include <thread>
 #include <cassert>
 
-
+#include "callstack/callstack.h"
 
 
 
@@ -18,45 +18,45 @@ struct resumable
 
         promise_type()
         {
-            std::cout << __FUNCTION__  << "\n";
+            callstack::printStack();
         }
 
         auto get_return_object()                                            // must be called this
         {
-            std::cout << __FUNCTION__  << "\n";
+            callstack::printStack();
             return coro_handle::from_promise(*this);
         }
 
         auto initial_suspend()                                              // must be called this
         { 
-            std::cout << __FUNCTION__ << "\n";
+            callstack::printStack();
             return std::suspend_always(); 
         }
 
         auto final_suspend() noexcept                                       // must be called this
         { 
-            std::cout << __FUNCTION__ << "\n";
+            callstack::printStack();
             return std::suspend_always(); 
         }
 
 
         void unhandled_exception()                                          // must be called this
         {
-            std::cout << __FUNCTION__ << "\n";
+            callstack::printStack();
             std::terminate();
         }
 
 
         auto yield_value(int i)                                          // must be called this - called on co_yield
         {
-            std::cout << __FUNCTION__ << ' ' << i << "\n";
+            callstack::printStack();
             value=i;
             return std::suspend_always(); 
         }
 
         void return_value(int i)                                          // must be called this - called on co_return
         {
-            std::cout << __FUNCTION__ << ' ' << i << "\n";
+            callstack::printStack();
             value=i;
         }
     };
@@ -70,12 +70,12 @@ struct resumable
 
     resumable(coro_handle handle) : handle(handle) 
     { 
-        std::cout << __FUNCTION__ << "\n";
+            callstack::printStack();
     }
 
     ~resumable() 
     { 
-        std::cout << __FUNCTION__ << "\n";
+            callstack::printStack();
         handle.destroy(); 
     }
 
@@ -88,7 +88,7 @@ struct resumable
 
     bool resume() 
     {
-        std::cout << __FUNCTION__ << "\n";
+        callstack::printStack();
 
         if (!handle.done())
         {
@@ -128,16 +128,20 @@ resumable go()
 
 int main()
 {
-    std::cout << __FUNCTION__ << "\n";
-
+    callstack::init();
+ 
+    std::cout << "calling go for 1st time\n";
     resumable res = go();
+    std::cout << "called go for 1st time\n";
 
-    std::cout << __FUNCTION__ << "\n";
 
-    while (res.resume())
+    while ( std::cout << "main resuming\n" && res.resume())
     {
-        std::cout << __FUNCTION__ << " loop " << res.value() << '\n';;
+        auto value = res.value();
+
+        std::cout << "main got " << value << '\n';
     }
+
 
     std::cout << "Final value was " << res.value() << std::endl;
   

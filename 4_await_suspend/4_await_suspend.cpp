@@ -6,25 +6,6 @@
 #include "callstack/callstack.h"
 
 
-__forceinline void printStack()
-{
-    auto stack = callstack::get();
-
-    std::reverse(stack.begin(),stack.end());
-
-    if(stack.back() == "printStack")
-    {
-        stack.pop_back();
-    }
-
-
-    for(const auto &frame : stack)
-    {
-        std::cout << " " << frame ;
-    }
-
-    std::cout << "\n";
-}
 
 
 
@@ -44,18 +25,18 @@ struct suspend_always
 
     _NODISCARD  bool await_ready() const noexcept 
     {
-        printStack();
+        callstack::printStack();
         return false;
     }
 
     void await_suspend(std::coroutine_handle<>) const noexcept 
     {
-        printStack();
+        callstack::printStack();
     }
     
     void await_resume() const noexcept 
     {
-        printStack();
+        callstack::printStack();
     }
 };
 
@@ -72,45 +53,50 @@ struct resumable
 
         promise_type()
         {
-            printStack();
+            callstack::printStack();
+        }
+
+        ~promise_type()
+        {
+            callstack::printStack();
         }
 
         auto get_return_object()                                            // must be called this
         {
-            printStack();
+            callstack::printStack();
             return coro_handle::from_promise(*this);
         }
 
         auto initial_suspend()                                              // must be called this
         { 
-            printStack();
+            callstack::printStack();
             return jle::suspend_always(); 
         }
 
         auto final_suspend() noexcept                                       // must be called this
         { 
-            printStack();
+            callstack::printStack();
             return jle::suspend_always(); 
         }
 
 
         void unhandled_exception()                                          // must be called this
         {
-            printStack();
+            callstack::printStack();
             std::terminate();
         }
 
 
         auto yield_value(int i)                                          // must be called this - called on co_yield
         {
-            printStack();
+            callstack::printStack();
             value=i;
             return jle::suspend_always(); 
         }
 
         void return_value(int i)                                          // must be called this - called on co_return
         {
-            printStack();
+            callstack::printStack();
             value=i;
         }
     };
@@ -122,11 +108,12 @@ struct resumable
 
     resumable(coro_handle handle) : handle(handle) 
     { 
-        printStack();
+        callstack::printStack();
     }
 
     ~resumable() 
     { 
+        callstack::printStack();
         handle.destroy(); 
     }
 
@@ -139,7 +126,7 @@ struct resumable
 
     bool resume() 
     {
-        printStack();
+        callstack::printStack();
 
         if (!handle.done())
         {
@@ -152,7 +139,7 @@ struct resumable
 
     int value()
     {
-        printStack();
+        callstack::printStack();
         return handle.promise().value;
     }
 
@@ -197,4 +184,6 @@ int main()
         std::cout << "main got " << value << '\n';
     }
 
+    auto value = res.value();
+    std::cout << "main got " << value << '\n';
 }
