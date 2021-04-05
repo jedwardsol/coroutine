@@ -1,7 +1,34 @@
 #include <iostream>
+#include <iomanip>
 #include <coroutine>
 #include <thread>
 #include <cassert>
+#include "callstack/callstack.h"
+
+
+__forceinline void printStack()
+{
+    auto stack = callstack::get();
+
+    std::reverse(stack.begin(),stack.end());
+
+    if(stack.back() == "printStack")
+    {
+        stack.pop_back();
+    }
+
+
+    for(const auto &frame : stack)
+    {
+        std::cout << " " << frame ;
+    }
+
+    std::cout << "\n";
+}
+
+
+
+
 
 namespace jle
 {
@@ -10,21 +37,25 @@ namespace jle
 
 struct suspend_always 
 {
+    suspend_always()
+    {
+//      printStack();
+    }
+
     _NODISCARD  bool await_ready() const noexcept 
     {
-        std::cout << __FUNCTION__  << "\n";
-
+        printStack();
         return false;
     }
 
     void await_suspend(std::coroutine_handle<>) const noexcept 
     {
-        std::cout << __FUNCTION__  << "\n";
+        printStack();
     }
     
     void await_resume() const noexcept 
     {
-        std::cout << __FUNCTION__  << "\n";
+        printStack();
     }
 };
 
@@ -41,50 +72,48 @@ struct resumable
 
         promise_type()
         {
-            std::cout << __FUNCTION__  << "\n";
+            printStack();
         }
 
         auto get_return_object()                                            // must be called this
         {
-            std::cout << __FUNCTION__  << "\n";
+            printStack();
             return coro_handle::from_promise(*this);
         }
 
         auto initial_suspend()                                              // must be called this
         { 
-            std::cout << __FUNCTION__ << "\n";
+            printStack();
             return jle::suspend_always(); 
         }
 
         auto final_suspend() noexcept                                       // must be called this
         { 
-            std::cout << __FUNCTION__ << "\n";
+            printStack();
             return jle::suspend_always(); 
         }
 
 
         void unhandled_exception()                                          // must be called this
         {
-            std::cout << __FUNCTION__ << "\n";
+            printStack();
             std::terminate();
         }
 
 
         auto yield_value(int i)                                          // must be called this - called on co_yield
         {
-            std::cout << __FUNCTION__ << ' ' << i << "\n";
+            printStack();
             value=i;
             return jle::suspend_always(); 
         }
 
         void return_value(int i)                                          // must be called this - called on co_return
         {
-            std::cout << __FUNCTION__ << ' ' << i << "\n";
+            printStack();
             value=i;
         }
     };
-
-
 
 
 
@@ -93,12 +122,11 @@ struct resumable
 
     resumable(coro_handle handle) : handle(handle) 
     { 
-        std::cout << __FUNCTION__ << "\n";
+        printStack();
     }
 
     ~resumable() 
     { 
-        std::cout << __FUNCTION__ << "\n";
         handle.destroy(); 
     }
 
@@ -111,7 +139,7 @@ struct resumable
 
     bool resume() 
     {
-        std::cout << __FUNCTION__ << "\n";
+        printStack();
 
         if (!handle.done())
         {
@@ -124,6 +152,7 @@ struct resumable
 
     int value()
     {
+        printStack();
         return handle.promise().value;
     }
 
@@ -138,30 +167,34 @@ private:
 
 resumable go()
 {
+    std::cout << "coroutine starting\n";
     int pi[]={3,1,4,1,5,9};
 
     for(int index=0;index<5;index++)
     {
+        std::cout << "coroutine yielding\n";
         co_yield pi[index];
     }
 
+    std::cout << "coroutine returning\n";
     co_return pi[5];
 }
 
 
 int main()
 {
-    std::cout << __FUNCTION__ << "\n";
-
+    callstack::init();
+ 
+    std::cout << "calling go for 1st time\n";
     resumable res = go();
+    std::cout << "called go for 1st time\n";
 
-    std::cout << __FUNCTION__ << "\n";
 
-    while (res.resume())
+    while ( std::cout << "main resuming\n" && res.resume())
     {
-        std::cout << __FUNCTION__ << " loop " << res.value() << '\n';;
+        auto value = res.value();
+
+        std::cout << "main got " << value << '\n';
     }
 
-    std::cout << "Final value was " << res.value() << std::endl;
-  
-  }
+}

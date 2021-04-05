@@ -4,14 +4,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1_wait", "1_wait\1_wait.vcxproj", "{AA481613-F6BF-4ACB-BC79-40CB2D0ACA55}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CF17EC0-38DE-4961-8852-29A92D176F52} = {0CF17EC0-38DE-4961-8852-29A92D176F52}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2_return", "2_return\2_return.vcxproj", "{F28FF59C-5FD1-4B02-9982-1EB9BA4E7FA2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CF17EC0-38DE-4961-8852-29A92D176F52} = {0CF17EC0-38DE-4961-8852-29A92D176F52}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3_yield", "3_yield\3_yield.vcxproj", "{C155587B-5210-4F6F-AC62-95B74F0C8958}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CF17EC0-38DE-4961-8852-29A92D176F52} = {0CF17EC0-38DE-4961-8852-29A92D176F52}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4_await_suspend", "4_await_suspend\4_await_suspend.vcxproj", "{ED3B63D9-2EAB-401F-AC4A-F478061D8E22}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CF17EC0-38DE-4961-8852-29A92D176F52} = {0CF17EC0-38DE-4961-8852-29A92D176F52}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5_await_new_thread", "5_await_new_thread\5_await_new_thread.vcxproj", "{751F5BEE-8614-430C-99CF-B256F4E14029}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CF17EC0-38DE-4961-8852-29A92D176F52} = {0CF17EC0-38DE-4961-8852-29A92D176F52}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "callstack", "callstack\callstack.vcxproj", "{0CF17EC0-38DE-4961-8852-29A92D176F52}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "callstackTest", "callstackTest\callstackTest.vcxproj", "{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CF17EC0-38DE-4961-8852-29A92D176F52} = {0CF17EC0-38DE-4961-8852-29A92D176F52}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +83,22 @@ Global
 		{751F5BEE-8614-430C-99CF-B256F4E14029}.Release|x64.Build.0 = Release|x64
 		{751F5BEE-8614-430C-99CF-B256F4E14029}.Release|x86.ActiveCfg = Release|Win32
 		{751F5BEE-8614-430C-99CF-B256F4E14029}.Release|x86.Build.0 = Release|Win32
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Debug|x64.ActiveCfg = Debug|x64
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Debug|x64.Build.0 = Debug|x64
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Debug|x86.ActiveCfg = Debug|Win32
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Debug|x86.Build.0 = Debug|Win32
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Release|x64.ActiveCfg = Release|x64
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Release|x64.Build.0 = Release|x64
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Release|x86.ActiveCfg = Release|Win32
+		{0CF17EC0-38DE-4961-8852-29A92D176F52}.Release|x86.Build.0 = Release|Win32
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Debug|x64.ActiveCfg = Debug|x64
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Debug|x64.Build.0 = Debug|x64
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Debug|x86.ActiveCfg = Debug|Win32
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Debug|x86.Build.0 = Debug|Win32
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Release|x64.ActiveCfg = Release|x64
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Release|x64.Build.0 = Release|x64
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Release|x86.ActiveCfg = Release|Win32
+		{13AD065D-7868-48B4-9DE6-78C5A82BA1CE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
